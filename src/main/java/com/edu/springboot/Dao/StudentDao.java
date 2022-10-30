@@ -12,26 +12,29 @@ import java.util.List;
 // JpaRepository<T,ID>第一个参数是实体类，第二个参数是主键类型
 public interface StudentDao extends JpaRepository<Student,Long> {
     // 根据Name和Password查找学生实体并返回该实体
-    Student findStudentByNameAndPassword(String Name,String Password);
+    Student findStudentByNameAndPassword(String name,String password);
 
     // 根据ID查找学生
-    Student findStudentByStuId(Long StuId);
+    Student findStudentById(Long id);
 
     // 查找所有学生
     List<Student> findAll();
 
     // 根据ID删除学生
-    void deleteStudentByStuId(Long StuId);
+    @Transactional
+    @Modifying
+    void deleteStudentById(Long id);
 
     // 根据ID更新学生姓名
     @Transactional
     @Modifying
-    @Query("update Student s set s.Name=?1 where s.StuId=?2")
-    void updateStudentNameById(String Name, Long StuId);
+    @Query("update Student s set s.name=?1 where s.id=?2")
+    void updateStudentNameById(String name, Long id);
 
     // 根据ID更新密码
     @Transactional
     @Modifying
-    @Query("update Student s set s.Password=?1 where s.StuId=?2")
-    void updateStudentPasswordById(String Password, Long StuId);
+    @Query("update Student s set s.password=?1 where s.id=?2")
+    void updateStudentPasswordById(String password, Long id);
+
 }

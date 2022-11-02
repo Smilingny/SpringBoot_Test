@@ -23,12 +23,12 @@ public class StudentApi {
     @ApiOperation("学生登录")  // 设置Api名称
     @CrossOrigin  // 设置允许跨域访问
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "Name", value = "学生姓名",dataTypeClass = String.class,defaultValue = "admin", required = true),
-            @ApiImplicitParam(name = "Password", value = "密码",dataTypeClass = String.class, defaultValue = "password", required = true)
+            @ApiImplicitParam(name = "name", value = "姓名", dataTypeClass = String.class, defaultValue = "admin", required = true),
+            @ApiImplicitParam(name = "password", value = "密码", dataTypeClass = String.class, defaultValue = "password", required = true)
     })  // 设置参数为必需
     @ApiResponse(code = 100, message = "成功", response = Student.class) // 表示响应信息
-    public Student login(@RequestParam String Name, @RequestParam String Password) {
-        return sDao.findStudentByNameAndPassword(Name, Password);
+    public Student login(@RequestParam String name, @RequestParam String password) {
+        return sDao.findStudentByNameAndPassword(name, password);
     }
 
     // 注册功能
@@ -44,7 +44,7 @@ public class StudentApi {
     @GetMapping("/getone/{id}")
     @ApiOperation("由ID查找学生")
     @CrossOrigin
-    @ApiImplicitParam(name = "id", value = "学号ID",dataTypeClass = Long.class, defaultValue = "0", required = true)
+    @ApiImplicitParam(name = "id", value = "学号ID", dataTypeClass = Long.class, defaultValue = "0", required = true)
     @ApiResponse(code = 100, message = "成功", response = Student.class)
     public Student getOne(@PathVariable("id") Long id) {
         return sDao.findStudentById(id);
@@ -63,16 +63,19 @@ public class StudentApi {
     @PutMapping("/change")
     @ApiOperation("修改学生信息")
     @CrossOrigin
-    @ApiResponse(code = 100, message = "成功")
-    public void changeStu(@RequestBody Student student) {
-        sDao.save(student);
+    @ApiResponse(code = 100, message = "成功", response = Student.class)
+    public Student changeStu(@RequestBody Student student) {
+        if(sDao.existsById(student.getId())) {
+            return sDao.save(student);
+        }
+        return null;
     }
 
     // 删除用户
     @DeleteMapping("/delete")
     @ApiOperation("由ID删除学生")
     @CrossOrigin
-    @ApiImplicitParam(name = "id", value = "学号ID",dataTypeClass = Long.class, required = true)
+    @ApiImplicitParam(name = "id", value = "学号ID", dataTypeClass = Long.class, required = true)
     @ApiResponse(code = 100, message = "成功")
     public void deleteStu(@RequestParam Long id) {
         sDao.deleteStudentById(id);

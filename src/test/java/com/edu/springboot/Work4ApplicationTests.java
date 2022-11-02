@@ -36,7 +36,7 @@ class Work4ApplicationTests {
 	// 测试删除
 	@Test
 	public void delete(){
-		sa.deleteStu(14L);
+		sa.deleteStu(15L);
 	}
 
 	// 测试更新用户

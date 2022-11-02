@@ -64,7 +64,7 @@ public class StudentApi {
     @ApiOperation("修改学生信息")
     @CrossOrigin
     @ApiResponse(code = 100, message = "成功", response = Student.class)
-    public Student changeStu(@RequestBody Student student) {
+    public Student changeStu( Student student) {
         if(sDao.existsById(student.getId())) {
             return sDao.save(student);
         }

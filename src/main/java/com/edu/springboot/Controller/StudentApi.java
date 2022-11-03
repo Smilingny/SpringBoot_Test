@@ -36,8 +36,8 @@ public class StudentApi {
     @ApiOperation("注册学生信息")
     @CrossOrigin
     @ApiResponse(code = 100, message = "成功")
-    public void registerStu(@RequestBody Student student) {
-        sDao.save(student);
+    public Student registerStu(Student student) {
+        return sDao.save(student);
     }
 
     // 根据ID查找用户信息
@@ -77,7 +77,7 @@ public class StudentApi {
     @CrossOrigin
     @ApiImplicitParam(name = "id", value = "学号ID", dataTypeClass = Long.class, required = true)
     @ApiResponse(code = 100, message = "成功")
-    public void deleteStu(@RequestParam Long id) {
-        sDao.deleteStudentById(id);
+    public Student deleteStu(@RequestParam Long id) {
+        return sDao.deleteStudentById(id);
     }
 }

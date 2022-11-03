@@ -23,7 +23,7 @@ public interface StudentDao extends JpaRepository<Student,Long> {
     // 根据ID删除学生
     @Transactional
     @Modifying
-    void deleteStudentById(Long id);
+    Student deleteStudentById(Long id);
 
     // 根据ID更新学生姓名
     @Transactional

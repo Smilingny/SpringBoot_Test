@@ -72,12 +72,13 @@ public class StudentApi {
     }
 
     // 删除用户
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     @ApiOperation("由ID删除学生")
     @CrossOrigin
     @ApiImplicitParam(name = "id", value = "学号ID", dataTypeClass = Long.class, required = true)
     @ApiResponse(code = 100, message = "成功")
-    public Student deleteStu(@RequestParam Long id) {
-        return sDao.deleteStudentById(id);
+    public boolean deleteStu(Long id) {
+         sDao.deleteStudentById(id);
+        return !sDao.existsById(id);
     }
 }

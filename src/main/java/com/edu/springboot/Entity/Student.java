@@ -1,7 +1,6 @@
 package com.edu.springboot.Entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Student {
@@ -11,21 +10,6 @@ public class Student {
     private String name;
     private String password;
     private Integer age;
-    /*//学生和爱好为一对多的关系
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    // mappedBy = "student" 形成双向关系，避免生成中间表
-    // cascade = CascadeType.ALL 包含所有持久化操作
-    // fetch = FetchType.LAZY 表示关系类在被访问时才加载
-    // 学生有多个爱好，故采取泛型
-    public List<Hobby> hobbyList;
-
-    public List<Hobby> getHobbyList() {
-        return hobbyList;
-    }
-
-    public void setHobbyList(List<Hobby> HobbyList) {
-        this.hobbyList = HobbyList;
-    }*/
 
     public Long getId() {
         return id;

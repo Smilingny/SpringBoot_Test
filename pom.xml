@@ -17,34 +17,40 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+<!--		SpringBoot框架启动依赖-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
+<!--		Spring Boot测试依赖包-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
+<!--		JPA依赖包-->
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
 			<version>2.2</version>
 		</dependency>
 
+<!--		JDBC依赖包-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.30</version>
 		</dependency>
 
+<!--		Spring Boot Web依赖包-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+<!--		Spring Boot Data依赖包-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -55,14 +61,14 @@
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 
-
-		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+<!--		Swagger依赖包-->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
 		</dependency>
 
+<!--		Servlet依赖包-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
